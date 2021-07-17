@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 cap = cv2.VideoCapture(0)
-image = cv2.imread('me.jpeg')
+image = cv2.imread('me.jpg')
 while True:
     ret, frame = cap.read()
     frame = cv2.resize(frame, (640, 480))
@@ -12,7 +12,6 @@ while True:
     res = cv2.bitwise_and(frame, frame, mask=mask)
     f = frame - res
     f = np.where(f == 0, image, f)
-    cv2.imshow("video", frame)
     cv2.imshow("mask", f)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
